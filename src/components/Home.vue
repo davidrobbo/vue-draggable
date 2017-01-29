@@ -6,30 +6,30 @@
         <formelements></formelements>
         <div class="row">
             <div :class="cols">
-                <draggable class="some-height" :list="listOne" :options="options" @start="drag=true" @end="drag=false" >
-                    <div class="element" v-for="(element, i) in listOne">
-                        <i class="fa fa-arrows">icon</i> {{element.name }} | {{ element.type.type }}
-                        <div class="btn btn-default" @click="editElement('listOne', i)">Edit</div>
-                        <div class="btn btn-danger" @click="deleteElement('listOne', i)">Delete</div>
-                    </div>
+                <draggable :element="'ul'" class="list-group" :list="listOne" :options="options" @start="drag=true" @end="drag=false" >
+                    <li class="clearfix list-group-item" v-for="(element, i) in listOne">
+                        <i class="fa fa-arrows pull-left"></i> {{element.name }} | {{ element.type.type }}
+                        <div class="btn btn-default pull-right" @click="editElement('listOne', i)">Edit</div>
+                        <div class="btn btn-danger pull-right" @click="deleteElement('listOne', i)">Delete</div>
+                    </li>
                 </draggable>
             </div>
             <div :class="cols" v-if="form.columns>1">
-                <draggable class="some-height" :list="listTwo" :options="options" @start="drag=true" @end="drag=false" >
-                    <div class="element" v-for="(element, i) in listTwo">
-                        <i class="icon-move">icon</i> {{element.name}} | {{ element.type.type }}
-                        <div class="btn btn-default" @click="editElement('listTwo', i)">Edit</div>
-                        <div class="btn btn-danger" @click="deleteElement('listTwo', i)">Delete</div>
-                    </div>
+                <draggable :element="'ul'" class="list-group" :list="listTwo" :options="options" @start="drag=true" @end="drag=false" >
+                    <li class="clearfix list-group-item" v-for="(element, i) in listTwo">
+                        <i class="fa fa-arrows pull-left"></i> {{element.name}} | {{ element.type.type }}
+                        <div class="btn btn-default pull-right" @click="editElement('listTwo', i)">Edit</div>
+                        <div class="btn btn-danger pull-right" @click="deleteElement('listTwo', i)">Delete</div>
+                    </li>
                 </draggable>
             </div>
             <div :class="cols" v-if="form.columns>2">
-                <draggable class="some-height" :list="listThree" :options="options" @start="drag=true" @end="drag=false" >
-                    <div class="element" v-for="(element, i) in listThree">
-                        <i class="icon-move">icon</i> {{element.name}} | {{ element.type.type }}
-                        <div class="btn btn-default" @click="editElement('listThree', i)">Edit</div>
-                        <div class="btn btn-danger" @click="deleteElement('listThree', i)">Delete</div>
-                    </div>
+                <draggable :element="'ul'" class="list-group" :list="listThree" :options="options" @start="drag=true" @end="drag=false" >
+                    <li class="clearfix list-group-item" v-for="(element, i) in listThree">
+                        <i class="fa fa-arrows pull-left"></i> {{element.name}} | {{ element.type.type }}
+                        <div class="btn btn-default pull-right" @click="editElement('listThree', i)">Edit</div>
+                        <div class="btn btn-danger pull-right" @click="deleteElement('listThree', i)">Delete</div>
+                    </li>
                 </draggable>
             </div>
             {{ listOne }}
@@ -57,7 +57,7 @@
             return {
                 options: {
                     group: 'forms',
-                    handle: '.icon-move'
+                    handle: '.fa-arrows'
                 }
             }
         },
@@ -106,7 +106,10 @@
         padding-top: 8px;
         padding-bottom: 8px;
     }
-    .icon-move{
+    .fa-arrows{
         cursor:pointer;
+    }
+    .list-group{
+        min-height: 20px;
     }
 </style>
